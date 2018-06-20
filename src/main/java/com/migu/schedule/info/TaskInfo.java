@@ -9,20 +9,29 @@ package com.migu.schedule.info;
 public class TaskInfo
 {
     private int taskId;
+    
     private int nodeId;
+    
     public int getNodeId()
     {
         return nodeId;
     }
-    public int getTaskId(){  return taskId; }
+    
+    public int getTaskId()
+    {
+        return taskId;
+    }
+    
     public void setNodeId(int nodeId)
     {
         this.nodeId = nodeId;
     }
+    
     public void setTaskId(int taskId)
     {
         this.taskId = taskId;
     }
+    
     @Override
     public String toString()
     {

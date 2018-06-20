@@ -10,13 +10,14 @@ import com.migu.schedule.constants.ReturnCodeKeys;
 import com.migu.schedule.info.TaskInfo;
 
 public class ScheduleTest
-    {
+{
     /**
      * TaskSchedule实例
      */
     private Schedule schedule = new Schedule();
     
-    /** 测试调度方案是否符合
+    /**
+     * 测试调度方案是否符合
      * 
      * @param expecteds 期望的测试结果
      * @param actual 实际返回结果
@@ -99,7 +100,7 @@ public class ScheduleTest
         actual = schedule.addTask(0, 10);
         Assert.assertEquals(ReturnCodeKeys.E009, actual);
     }
-
+    
     @Test
     public void testAddTask2()
     {
@@ -129,7 +130,7 @@ public class ScheduleTest
         actual = schedule.deleteTask(2);
         Assert.assertEquals(ReturnCodeKeys.E012, actual);
     }
-
+    
     @Test
     public void testScheduleTask0()
     {
@@ -156,14 +157,7 @@ public class ScheduleTest
         
         Assert.assertEquals(ReturnCodeKeys.E015, actual);
         
-        int expecteds[][] = { 
-            {1, 7}, 
-            {2, 6}, 
-            {3, 7}, 
-            {4, 1}, 
-            {5, 7}, 
-            {6, 7}, 
-            {7, 6}};
+        int expecteds[][] = {{1, 7}, {2, 6}, {3, 7}, {4, 1}, {5, 7}, {6, 7}, {7, 6}};
         
         assertPlanEqual(expecteds, tasks);
     }
@@ -190,11 +184,7 @@ public class ScheduleTest
         
         Assert.assertEquals(ReturnCodeKeys.E015, actual);
         
-        int expecteds[][] = { 
-            {1, 1}, 
-            {2, 1}, 
-            {3, 3}, 
-            {4, 3}};
+        int expecteds[][] = {{1, 1}, {2, 1}, {3, 3}, {4, 3}};
         
         assertPlanEqual(expecteds, tasks);
     }
