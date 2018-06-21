@@ -207,6 +207,9 @@ public class Schedule
             // print();
             return ReturnCodeKeys.E013;
         }
+        
+        if (exchange())
+            return ReturnCodeKeys.E013;
         return ReturnCodeKeys.E014;
     }
     
@@ -261,8 +264,9 @@ public class Schedule
      *
      * @author sunyuanpeng
      */
-    private static void exchange()
+    private static boolean exchange()
     {
+        boolean flag = false;
         nodeIdList = sort(nodeIdList);
         // 将消耗率小的换给编号小的
         for (int i = 0; i < nodeIdList.size(); i++)
@@ -275,6 +279,7 @@ public class Schedule
                 int sumJ = nodeJ.getSumCost();
                 if (sumI > sumJ)
                 {
+                    flag = true;
                     int nodeId = nodeI.getNodeId();
                     nodeI.setNodeId(nodeJ.getNodeId());
                     nodeJ.setNodeId(nodeId);
@@ -298,6 +303,7 @@ public class Schedule
                 int indexJ = nodeJ.getTaskIdList().size();
                 if (sumI == sumJ && indexI > indexJ)
                 {
+                    flag = true;
                     int nodeId = nodeI.getNodeId();
                     nodeI.setNodeId(nodeJ.getNodeId());
                     nodeJ.setNodeId(nodeId);
@@ -307,7 +313,7 @@ public class Schedule
                 }
             }
         }
-        
+        return flag;
     }
     
     private static int getMaxCostTask(int cost)
